@@ -31,7 +31,7 @@ const Login = () => {
     >
       <Box
         sx={{
-          width: { xs: "90%", sm: "70%", md: "40%" },
+          width: { xs: "100%", sm: "70%", md: "40%" },
           padding: 2,
           height: "100vh",
           backgroundColor: "#121212",
