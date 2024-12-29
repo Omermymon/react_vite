@@ -1,7 +1,12 @@
-import "./styles/App.css";
+import Login from "./components/Login";
+import "./styles/app.css";
 
 function App() {
-  return <>here we go</>;
+  return (
+    <>
+      <Login />
+    </>
+  );
 }
 
 export default App;
