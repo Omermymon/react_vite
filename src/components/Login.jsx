@@ -21,8 +21,8 @@ const Login = () => {
         position: "absolute",
         top: 0,
         left: 0,
-        width: "80vw",
-        height: "80vh",
+        width: "100vw",
+        height: "100vh",
         backgroundImage: "linear-gradient(to right, #101212, #596161)",
         display: "flex",
         justifyContent: "center",
@@ -33,15 +33,21 @@ const Login = () => {
         sx={{
           width: { xs: "90%", sm: "70%", md: "40%" },
           padding: 2,
-          height: "100%",
           backgroundColor: "#121212",
           color: "white",
           borderRadius: "20px",
           boxSizing: "border-box",
           display: "flex",
+          height:"100%",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          "@media (min-width: 1200px) and (max-width: 1400px)": {
+            width: "45%",
+          },
+          "@media (min-width: 1401px)": {
+            width: "40%",
+          },
         }}
       >
         <Typography
@@ -50,8 +56,15 @@ const Login = () => {
           sx={{
             fontWeight: "bold",
             marginBottom: 4,
+            marginTop: 4,
             textAlign: "center",
             fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+            "@media (min-width: 1200px) and (max-width: 1400px)": {
+              fontSize: "2rem",
+            },
+            "@media (min-width: 1401px)": {
+              fontSize: "2.5rem",
+            },
           }}
         >
           Log in to MyTeam
@@ -84,7 +97,13 @@ const Login = () => {
                 borderRadius: "20px",
                 width: "100%",
                 maxWidth: "300px",
-                height: 50,
+                height: { xs: 40, sm: 45, md: 50 },
+                "@media (min-width: 1200px) and (max-width: 1400px)": {
+                  height: 45,
+                },
+                "@media (min-width: 1401px)": {
+                  height: 50,
+                },
                 border: "1px solid grey",
               }}
             >
@@ -114,10 +133,12 @@ const Login = () => {
               borderRadius: "5px",
               maxWidth: "300px",
               width: "100%",
+              fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
+              "@media (min-width: 1200px) and (max-width: 1400px)": {
+                fontSize: "1rem",
+              },
               "& .MuiOutlinedInput-root": {
                 color: "white",
-                padding: "8px",
-                "&.Mui-focused": { borderColor: "grey", outline: "none" },
               },
               "& .MuiInputLabel-root": { color: "white" },
               border: "1px solid grey",
@@ -134,11 +155,14 @@ const Login = () => {
               color: "white",
               borderRadius: "5px",
               maxWidth: "300px",
+              height: "25%",
               width: "100%",
+              fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
+              "@media (min-width: 1200px) and (max-width: 1400px)": {
+                fontSize: "1rem",
+              },
               "& .MuiOutlinedInput-root": {
                 color: "white",
-                padding: "8px",
-                "&.Mui-focused": { borderColor: "grey", outline: "none" },
               },
               "& .MuiInputLabel-root": { color: "white" },
               border: "1px solid grey",
@@ -154,7 +178,13 @@ const Login = () => {
               "&:hover": { backgroundColor: "#1AA541" },
               width: "100%",
               maxWidth: "300px",
-              height: 50,
+              height: { xs: 40, sm: 45, md: 50 },
+              "@media (min-width: 1200px) and (max-width: 1400px)": {
+                height: 45,
+              },
+              "@media (min-width: 1401px)": {
+                height: 50,
+              },
               marginTop: 2,
               border: "1px solid grey",
             }}
@@ -166,9 +196,16 @@ const Login = () => {
           variant="body2"
           sx={{
             marginTop: 4,
+            marginBottom: 4,
             color: "gray",
             textAlign: "center",
-            fontSize: { xs: "0.75rem", sm: "1rem" },
+            fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1rem" },
+            "@media (min-width: 1200px) and (max-width: 1400px)": {
+              fontSize: "0.9rem",
+            },
+            "@media (min-width: 1401px)": {
+              fontSize: "1rem",
+            },
           }}
         >
           Don’t have an account?{" "}
