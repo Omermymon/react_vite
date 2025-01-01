@@ -6,14 +6,22 @@ import TextField from "@mui/material/TextField";
 import Facebooklogo from "../assets/facebook.png";
 import Googlelogo from "../assets/google.png";
 import Applelogo from "../assets/apple.png";
+import { useTheme } from "@mui/material/styles";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const currentTheme = useTheme();
 
   const handleSubmit = () => {
     console.log("Submitting:", { username, password });
   };
+
+  const socialButtons = [
+    { label: "Sign in with Facebook", logo: Facebooklogo },
+    { label: "Sign in with Google", logo: Googlelogo },
+    { label: "Sign in with Apple", logo: Applelogo },
+  ];
 
   return (
     <Box
@@ -33,77 +41,34 @@ const Login = () => {
         sx={{
           width: { xs: "90%", sm: "70%", md: "40%" },
           padding: 2,
-          backgroundColor: "#121212",
-          color: "white",
-          borderRadius: "20px",
-          boxSizing: "border-box",
-          display: "flex",
           height:"100%",
-          flexDirection: "column",
+          backgroundColor: currentTheme.palette.background.paper,
+          color: currentTheme.palette.text.primary,
+          borderRadius: "20px",
           justifyContent: "center",
           alignItems: "center",
-          "@media (min-width: 1200px) and (max-width: 1400px)": {
-            width: "45%",
-          },
-          "@media (min-width: 1401px)": {
-            width: "40%",
-          },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
-        <Typography
-          variant="h4"
-          component="h1"
-          sx={{
-            fontWeight: "bold",
-            marginBottom: 4,
-            marginTop: 4,
-            textAlign: "center",
-            fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-            "@media (min-width: 1200px) and (max-width: 1400px)": {
-              fontSize: "2rem",
-            },
-            "@media (min-width: 1401px)": {
-              fontSize: "2.5rem",
-            },
-          }}
-        >
+        <Typography variant="h4" component="h1" sx={{ mb: 4, mt: 4 }}>
           Log in to MyTeam
         </Typography>
 
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-            alignItems: "center",
-          }}
-        >
-          {[{ label: "Sign in with Facebook", logo: Facebooklogo },
-            { label: "Sign in with Google", logo: Googlelogo },
-            { label: "Sign in with Apple", logo: Applelogo }
-          ].map(({ label, logo }) => (
+        <Box sx={{ width: "100%", display: "flex", flexDirection: "column", gap: 2, alignItems: "center" }}>
+          {socialButtons.map(({ label, logo }) => (
             <Button
               key={label}
               variant="contained"
               fullWidth
-              startIcon={
-                <img src={logo} alt={label} style={{ width: 20, height: 20 }} />
-              }
+              startIcon={<img src={logo} alt={label} style={{ width: 20, height: 20 }} />}
               sx={{
-                backgroundColor: "#121212",
+                backgroundColor: currentTheme.palette.background.paper,
                 color: "white",
                 "&:hover": { backgroundColor: "#333333" },
-                borderRadius: "20px",
-                width: "100%",
                 maxWidth: "300px",
-                height: { xs: 40, sm: 45, md: 50 },
-                "@media (min-width: 1200px) and (max-width: 1400px)": {
-                  height: 45,
-                },
-                "@media (min-width: 1401px)": {
-                  height: 50,
-                },
+                height: 45,
                 border: "1px solid grey",
               }}
             >
@@ -112,37 +77,12 @@ const Login = () => {
           ))}
         </Box>
 
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-            alignItems: "center",
-            marginTop: 4,
-          }}
-        >
+        <Box sx={{ width: "100%", display: "flex", flexDirection: "column", gap: 2, alignItems: "center", mt: 4 }}>
           <TextField
             id="username"
             label="Email or username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            sx={{
-              backgroundColor: "transparent",
-              color: "white",
-              borderRadius: "5px",
-              maxWidth: "300px",
-              width: "100%",
-              fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
-              "@media (min-width: 1200px) and (max-width: 1400px)": {
-                fontSize: "1rem",
-              },
-              "& .MuiOutlinedInput-root": {
-                color: "white",
-              },
-              "& .MuiInputLabel-root": { color: "white" },
-              border: "1px solid grey",
-            }}
           />
           <TextField
             id="password"
@@ -150,66 +90,27 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            sx={{
-              backgroundColor: "#121212",
-              color: "white",
-              borderRadius: "5px",
-              maxWidth: "300px",
-              height: "25%",
-              width: "100%",
-              fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
-              "@media (min-width: 1200px) and (max-width: 1400px)": {
-                fontSize: "1rem",
-              },
-              "& .MuiOutlinedInput-root": {
-                color: "white",
-              },
-              "& .MuiInputLabel-root": { color: "white" },
-              border: "1px solid grey",
-            }}
           />
           <Button
             variant="contained"
             fullWidth
             onClick={handleSubmit}
             sx={{
-              backgroundColor: "#1DB954",
-              color: "white",
+              backgroundColor: currentTheme.palette.primary.main,
+              color: currentTheme.palette.primary.contrastText,
               "&:hover": { backgroundColor: "#1AA541" },
-              width: "100%",
               maxWidth: "300px",
-              height: { xs: 40, sm: 45, md: 50 },
-              "@media (min-width: 1200px) and (max-width: 1400px)": {
-                height: 45,
-              },
-              "@media (min-width: 1401px)": {
-                height: 50,
-              },
-              marginTop: 2,
-              border: "1px solid grey",
+              height: 45,
+              mt: 2,
             }}
           >
             Log in
           </Button>
         </Box>
-        <Typography
-          variant="body2"
-          sx={{
-            marginTop: 4,
-            marginBottom: 4,
-            color: "gray",
-            textAlign: "center",
-            fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1rem" },
-            "@media (min-width: 1200px) and (max-width: 1400px)": {
-              fontSize: "0.9rem",
-            },
-            "@media (min-width: 1401px)": {
-              fontSize: "1rem",
-            },
-          }}
-        >
+
+        <Typography variant="body2" sx={{ mt: 4, mb: 4, textAlign: "center" }}>
           Don’t have an account?{" "}
-          <span style={{ color: "#1DB954", cursor: "pointer" }}>Sign up</span>
+          <span style={{ color: currentTheme.palette.primary.main, cursor: "pointer" }}>Sign up</span>
         </Typography>
       </Box>
     </Box>
