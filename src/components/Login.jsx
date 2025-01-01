@@ -2,10 +2,10 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Facebooklogo from "../assets/facebook.png";
-import googlelogo from "../assets/google.png";
-import Applelogo from "../assets/apple.png";
 import TextField from "@mui/material/TextField";
+import Facebooklogo from "../assets/facebook.png";
+import Googlelogo from "../assets/google.png";
+import Applelogo from "../assets/apple.png";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -31,9 +31,9 @@ const Login = () => {
     >
       <Box
         sx={{
-          width: "40%",
+          width: { xs: "90%", sm: "70%", md: "40%" },
           padding: 2,
-          height: "100vh",
+          height: "100%",
           backgroundColor: "#121212",
           color: "white",
           borderRadius: "20px",
@@ -66,10 +66,9 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          {[
-            { label: "Sign in with Facebook", logo: Facebooklogo },
-            { label: "Sign in with Google", logo: googlelogo },
-            { label: "Sign in with Apple", logo: Applelogo },
+          {[{ label: "Sign in with Facebook", logo: Facebooklogo },
+            { label: "Sign in with Google", logo: Googlelogo },
+            { label: "Sign in with Apple", logo: Applelogo }
           ].map(({ label, logo }) => (
             <Button
               key={label}
