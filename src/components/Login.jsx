@@ -48,7 +48,7 @@ const Login = () => {
           height:"100%",
           backgroundColor: currentTheme.palette.background.paper,
           color: currentTheme.palette.text.primary,
-          borderRadius: "20px",
+          borderRadius: {xs:"0px",sm:"20px",md:"20px"},
           justifyContent: "center",
           alignItems: "center",
           display: "flex",
