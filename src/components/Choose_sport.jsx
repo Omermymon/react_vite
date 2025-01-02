@@ -5,17 +5,19 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { styled } from "@mui/system";
 
 
-const Home = () => {
+
+const Choose_sport = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const currentTheme = useTheme();
-  const navigate = useNavigate();
 
-const handle_press = () =>{
-    navigate("/Choose_sport");
-}
+  const ScopedButton = styled(Button)({
+    width: "80%",
+    borderRadius:"12px",
+  });
 
   
 
@@ -48,17 +50,21 @@ const handle_press = () =>{
         }}
       >
         <Typography variant="h4" component="h1" sx={{ mb: 4, mt: 4 }}>
-          Ready to play?
+          Choose your sport
         </Typography>
 
-        <Box sx={{ width: "100%", display: "flex", flexDirection: "row", gap: 2, alignItems: "center",justifyContent: "center", }}>
-          <Button variant="contained" onClick={handle_press}>Find a team</Button>
-          <Button variant="contained">Find a player</Button>
-
+        <Box sx={{ width: "100%", display: "flex", flexDirection: "column", gap: 2, alignItems: "center",justifyContent: "center", }}>
+          <ScopedButton variant="contained" >Soccer</ScopedButton>
+          <ScopedButton variant="contained">Basketball</ScopedButton>
+          <ScopedButton variant="contained">Hockey</ScopedButton>
+          <ScopedButton variant="contained">Tennis</ScopedButton>
+          <ScopedButton variant="contained">Volleyball</ScopedButton>
+          <ScopedButton variant="contained">Rugby</ScopedButton>
+          <ScopedButton variant="contained">Padel</ScopedButton>
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default Home;
+export default Choose_sport;

@@ -7,14 +7,18 @@ import Facebooklogo from "../assets/facebook.png";
 import Googlelogo from "../assets/google.png";
 import Applelogo from "../assets/apple.png";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const currentTheme = useTheme();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     console.log("Submitting:", { username, password });
+    navigate("/home");
   };
 
   const socialButtons = [
@@ -49,7 +53,6 @@ const Login = () => {
           alignItems: "center",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
         }}
       >
         <Typography variant="h4" component="h1" sx={{ mb: 4, mt: 4 }}>
