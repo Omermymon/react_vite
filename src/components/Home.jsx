@@ -27,7 +27,7 @@ const handle_press = () =>{
         left: 0,
         width: "100vw",
         height: "100vh",
-        backgroundImage: "linear-gradient(to right, #101212, #596161)",
+        backgroundImage: "linear-gradient(to right, #101212,rgb(41, 49, 49))",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
