@@ -11,6 +11,7 @@ export default function BasicTimePicker({ label }) {
         <TimePicker
           label={label}
           sx={{
+            width: { xs: "80%", sm: "150px" }, // 80% width on mobile, fixed width on larger screens
             "& .MuiSvgIcon-root": {
               color: "white",
             },
