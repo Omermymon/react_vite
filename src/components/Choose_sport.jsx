@@ -18,6 +18,11 @@ const Choose_sport = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const currentTheme = useTheme();
+  const navigate = useNavigate();
+
+  const handle_press = () => {
+    navigate("/Find_a_Team");
+  };
 
   const ScopedButton = styled(Button)({
     width: "60%",
@@ -52,6 +57,7 @@ const Choose_sport = () => {
           <ScopedButton
             key={sport.name}
             variant="contained"
+            onClick={handle_press}
             sx={{
               display: "flex",
               justifyContent: "flex-start", // Ensure the content is aligned to the left

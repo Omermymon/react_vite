@@ -6,8 +6,10 @@ import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import BoxWrapper from "./Box_wrappers";
+import BasicDateCalendar from "./helper_components/Date";
+import BasicTimePicker from "./helper_components/Time";
 
-const Home = () => {
+const Find_a_team = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const currentTheme = useTheme();
@@ -19,29 +21,24 @@ const Home = () => {
 
   return (
     <BoxWrapper>
-      <Typography variant="h4" component="h1" sx={{ mb: 4, mt: 4 }}>
-        Ready to play?
-      </Typography>
-
       <Box
         sx={{
           width: "100%",
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           gap: 2,
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <Button variant="contained" onClick={handle_press}>
-          Find a team
-        </Button>
-        <Button variant="contained" onClick={handle_press}>
-          Find a player
-        </Button>
+        <Typography variant="h4" component="h3" sx={{ mb: 2, mt: 4 }}>
+          Choose Date
+        </Typography>
+        <BasicDateCalendar />
+        <BasicTimePicker />
       </Box>
     </BoxWrapper>
   );
 };
 
-export default Home;
+export default Find_a_team;
