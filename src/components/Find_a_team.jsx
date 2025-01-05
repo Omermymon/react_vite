@@ -39,7 +39,15 @@ const Find_a_team = () => {
           <Typography variant="h6" align="center">
             Select Time Range
           </Typography>
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: "45px",
+              marginRight: "45px",
+              gap: "10px",
+            }}
+          >
             <BasicTimePicker label={"Start Time"} />
             <BasicTimePicker label={"Stop Time"} />
           </Box>
