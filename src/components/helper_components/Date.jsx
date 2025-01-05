@@ -7,7 +7,6 @@ export default function BasicDateCalendar() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
-        label="Pick Time"
         slotProps={{
           leftArrowIcon: { sx: { color: "white" } },
           rightArrowIcon: { sx: { color: "white" } },

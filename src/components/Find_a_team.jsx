@@ -32,10 +32,18 @@ const Find_a_team = () => {
         }}
       >
         <Typography variant="h4" component="h3" sx={{ mb: 2, mt: 4 }}>
-          Choose Date
+          Choose Game Time
         </Typography>
         <BasicDateCalendar />
-        <BasicTimePicker />
+        <Box sx={{ display: "flex", flexDirection: "column", mb: 2 }}>
+          <Typography variant="h6" align="center">
+            Select Time Range
+          </Typography>
+          <Box sx={{ display: "flex", flexDirection: "row" }}>
+            <BasicTimePicker label={"Start Time"} />
+            <BasicTimePicker label={"Stop Time"} />
+          </Box>
+        </Box>
       </Box>
     </BoxWrapper>
   );
