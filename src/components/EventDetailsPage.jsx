@@ -1,6 +1,12 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
@@ -10,16 +16,17 @@ import BoxWrapper from "./helper_components/Box_wrappers";
 const EventDetailsPag = () => {
   const [choose_option, setChooseOption] = useState("");
   const currentTheme = useTheme();
+  const [dialogOpen, setDialogOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handle_press_team = () => {
-    setChooseOption("team");
-    navigate("/Choose_sport", { state: { choose_option: "team" } });
-  };
+  const handleSubmit = () => {
+    console.log("Event Created:", { location });
+    setDialogOpen(true);
 
-  const handle_press_player = () => {
-    setChooseOption("player");
-    navigate("/Choose_sport", { state: { choose_option: "player" } });
+    setTimeout(() => {
+      setDialogOpen(false);
+      navigate("/home");
+    }, 10000);
   };
 
   return (
@@ -81,7 +88,8 @@ const EventDetailsPag = () => {
         <Button
           variant="contained"
           color="primary"
-          size="large"
+          size="medium"
+          onClick={handleSubmit}
           sx={{
             textTransform: "none",
             width: "fit-content",
@@ -90,6 +98,19 @@ const EventDetailsPag = () => {
         >
           Post Event
         </Button>
+        <Dialog open={dialogOpen}>
+          <DialogTitle>Event Created Successfully!</DialogTitle>
+          <DialogContent>
+            <Typography>
+              Your event has been created and is now visible to other players!
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => navigate("/home")} color="primary">
+              Back to Home
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </BoxWrapper>
   );
