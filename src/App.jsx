@@ -9,6 +9,7 @@ import Find_a_team from "./components/Find_a_team";
 import Find_playing_teams from "./components/Find_playing_teams";
 import Create_event from "./components/Create_event";
 import EventDetailsPag from "./components/EventDetailsPage";
+import HomePage from "./components/Home_page";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Find_playing_teams" element={<Find_playing_teams />} />
         <Route path="/Create_event" element={<Create_event />} />
         <Route path="/EventDetailsPag" element={<EventDetailsPag />} />
+        <Route path="/Home_Page" element={<HomePage />} />
       </Routes>
     </ThemeProvider>
   );

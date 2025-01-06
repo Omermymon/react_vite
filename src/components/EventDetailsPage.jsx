@@ -25,7 +25,7 @@ const EventDetailsPag = () => {
 
     setTimeout(() => {
       setDialogOpen(false);
-      navigate("/home");
+      navigate("/Home_Page");
     }, 10000);
   };
 
@@ -106,7 +106,7 @@ const EventDetailsPag = () => {
             </Typography>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => navigate("/home")} color="primary">
+            <Button onClick={() => navigate("/Home_Page")} color="primary">
               Back to Home
             </Button>
           </DialogActions>

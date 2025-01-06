@@ -18,7 +18,7 @@ const Login = () => {
 
   const handleSubmit = () => {
     console.log("Submitting:", { username, password });
-    navigate("/home");
+    navigate("/Home_Page");
   };
 
   const socialButtons = [
