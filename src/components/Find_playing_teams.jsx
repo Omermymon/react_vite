@@ -2,24 +2,19 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import BoxWrapper from "./helper_components/Box_wrappers";
+import MapComponent from "./helper_components/Mape";
 
-const Home = () => {
-  const [choose_option, setChooseOption] = useState("");
+const Find_playing_teams = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const currentTheme = useTheme();
   const navigate = useNavigate();
 
-  const handle_press_team = () => {
-    setChooseOption("team");
-    navigate("/Choose_sport", { state: { choose_option: "team" } });
-  };
-
-  const handle_press_player = () => {
-    setChooseOption("player");
-    navigate("/Choose_sport", { state: { choose_option: "player" } });
+  const handle_press = () => {
+    navigate("/Choose_sport");
   };
 
   return (
@@ -38,15 +33,10 @@ const Home = () => {
           justifyContent: "center",
         }}
       >
-        <Button variant="contained" onClick={handle_press_team}>
-          Find a team
-        </Button>
-        <Button variant="contained" onClick={handle_press_player}>
-          Find a player
-        </Button>
+        <MapComponent />
       </Box>
     </BoxWrapper>
   );
 };
 
-export default Home;
+export default Find_playing_teams;

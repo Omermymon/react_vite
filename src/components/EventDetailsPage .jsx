@@ -7,7 +7,7 @@ import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import BoxWrapper from "./helper_components/Box_wrappers";
 
-const Home = () => {
+const EventDetailsPag = () => {
   const [choose_option, setChooseOption] = useState("");
   const currentTheme = useTheme();
   const navigate = useNavigate();
@@ -49,4 +49,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default EventDetailsPag;

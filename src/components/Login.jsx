@@ -8,7 +8,7 @@ import Googlelogo from "../assets/google.png";
 import Applelogo from "../assets/apple.png";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-import BoxWrapper from "./Box_wrappers";
+import BoxWrapper from "./helper_components/Box_wrappers";
 
 const Login = () => {
   const [username, setUsername] = useState("");

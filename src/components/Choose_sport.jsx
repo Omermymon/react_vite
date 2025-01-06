@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/system";
-import BoxWrapper from "./Box_wrappers";
+import BoxWrapper from "./helper_components/Box_wrappers";
 import Soccer from "../assets/sports/soccer.png";
 import Basketball from "../assets/sports/basketball.png";
 import Rugby from "../assets/sports/rugby.png";
@@ -13,15 +13,20 @@ import Tennis from "../assets/sports/tennis.png";
 import Volleyball from "../assets/sports/volleyball.png";
 import Padel from "../assets/sports/padel.png";
 import Hockey from "../assets/sports/hockey.png";
+import { useLocation } from "react-router-dom";
 
 const Choose_sport = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const location = useLocation();
+  const { choose_option } = location.state || {};
   const currentTheme = useTheme();
   const navigate = useNavigate();
 
   const handle_press = () => {
-    navigate("/Find_a_Team");
+    if (choose_option === "team") {
+      navigate("/Find_a_team");
+    } else {
+      navigate("/Create_event");
+    }
   };
 
   const ScopedButton = styled(Button)({
