@@ -22,11 +22,6 @@ const EventDetailsPag = () => {
   const handleSubmit = () => {
     console.log("Event Created:", { location });
     setDialogOpen(true);
-
-    setTimeout(() => {
-      setDialogOpen(false);
-      navigate("/Home_Page");
-    }, 10000);
   };
 
   return (
@@ -45,7 +40,6 @@ const EventDetailsPag = () => {
           justifyContent: "center",
         }}
       >
-        {/* Location Field */}
         <TextField
           label="Location"
           variant="outlined"
@@ -54,7 +48,6 @@ const EventDetailsPag = () => {
           placeholder="Enter specific address or area"
         />
 
-        {/* Number of Players Needed */}
         <TextField
           label="Number of Players Needed"
           variant="outlined"
@@ -64,7 +57,6 @@ const EventDetailsPag = () => {
           placeholder="E.g., 2 players"
         />
 
-        {/* Event Organizer Info */}
         <TextField
           label="Event Organizer Info"
           variant="outlined"
@@ -73,7 +65,6 @@ const EventDetailsPag = () => {
           placeholder="Name, contact, etc."
         />
 
-        {/* Additional Info */}
         <TextField
           label="Additional Info"
           variant="outlined"
@@ -84,7 +75,6 @@ const EventDetailsPag = () => {
           placeholder="Optional: Level of skill, bring equipment, etc."
         />
 
-        {/* Submit Button */}
         <Button
           variant="contained"
           color="primary"

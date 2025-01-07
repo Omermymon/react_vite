@@ -8,7 +8,7 @@ const Find_a_team = () => {
   const navigate = useNavigate();
 
   const handle_press = () => {
-    navigate("/Choose_sport");
+    navigate("/Existing_Events");
   };
 
   return <Date_and_Time onButtonClick={handle_press} />;

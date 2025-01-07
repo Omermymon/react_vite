@@ -93,7 +93,6 @@ const HomePage = () => {
   return (
     <BoxWrapper>
       <Box sx={{ p: 2 }}>
-        {/* Tabs for Future/Past Events */}
         <Tabs
           value={tab}
           onChange={handleTabChange}
@@ -106,7 +105,6 @@ const HomePage = () => {
           <Tab label="Past Events" />
         </Tabs>
 
-        {/* Event List */}
         <Box>
           {tab === 0 &&
             (mockEvents.future.length > 0 ? (

@@ -10,6 +10,7 @@ import Find_playing_teams from "./components/Find_playing_teams";
 import Create_event from "./components/Create_event";
 import EventDetailsPag from "./components/EventDetailsPage";
 import HomePage from "./components/Home_page";
+import FindEvents from "./components/Existing_Events";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/Create_event" element={<Create_event />} />
         <Route path="/EventDetailsPag" element={<EventDetailsPag />} />
         <Route path="/Home_Page" element={<HomePage />} />
+        <Route path="/Existing_Events" element={<FindEvents />} />
       </Routes>
     </ThemeProvider>
   );

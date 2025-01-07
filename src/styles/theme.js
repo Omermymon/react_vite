@@ -31,7 +31,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: "20px",
+          borderRadius: "15px",
         },
       },
     },
@@ -39,7 +39,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           maxWidth: "300px",
-          width: "100%",
+          width: "60%",
           "& .MuiOutlinedInput-root": {
             color: "white",
           },
