@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -15,6 +15,10 @@ import PeopleIcon from "@mui/icons-material/People";
 import AddIcon from "@mui/icons-material/Add";
 import BoxWrapper from "./helper_components/Box_wrappers";
 import { useNavigate } from "react-router-dom";
+import { db, auth } from "../services/firebase";
+import { getDocs, collection } from "firebase/firestore";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { renderEventCard } from "./helper_components/Render_card";
 
 const mockEvents = {
   future: [
@@ -45,8 +49,28 @@ const mockEvents = {
 };
 
 const HomePage = () => {
+  const [futureEvents, setFutureEvents] = useState([]);
   const [tab, setTab] = useState(0);
   const navigate = useNavigate();
+  const futureEventsRef = collection(db, "futureevents");
+
+  useEffect(() => {
+    const getfutureEvents = async () => {
+      try {
+        const data = await getDocs(futureEventsRef, {
+          userId: auth?.currentUser.uid,
+        });
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setFutureEvents(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getfutureEvents();
+  }, []);
 
   const handleTabChange = (event, newValue) => {
     setTab(newValue);
@@ -55,40 +79,6 @@ const HomePage = () => {
   const handleSubmit = () => {
     navigate("/home");
   };
-
-  const renderEventCard = (event) => (
-    <Card
-      key={event.id}
-      variant="outlined"
-      sx={{
-        mb: 2,
-        p: 2,
-        borderRadius: 2,
-        boxShadow: 3,
-      }}
-    >
-      <CardContent>
-        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-          {event.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-          {event.date}
-        </Typography>
-        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
-          <LocationOnIcon fontSize="small" />
-          <Typography variant="body2">{event.location}</Typography>
-        </Stack>
-        {event.playersNeeded && (
-          <Stack direction="row" alignItems="center" spacing={1}>
-            <PeopleIcon fontSize="small" />
-            <Typography variant="body2">
-              {`We need ${event.playersNeeded} more player(s)`}
-            </Typography>
-          </Stack>
-        )}
-      </CardContent>
-    </Card>
-  );
 
   return (
     <BoxWrapper>
@@ -107,8 +97,8 @@ const HomePage = () => {
 
         <Box>
           {tab === 0 &&
-            (mockEvents.future.length > 0 ? (
-              mockEvents.future.map(renderEventCard)
+            (futureEvents.length > 0 ? (
+              futureEvents.map(renderEventCard)
             ) : (
               <Typography>No upcoming events.</Typography>
             ))}

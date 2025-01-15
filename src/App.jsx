@@ -11,6 +11,7 @@ import Create_event from "./components/Create_event";
 import EventDetailsPag from "./components/EventDetailsPage";
 import HomePage from "./components/Home_page";
 import FindEvents from "./components/Existing_Events";
+import Signin from "./components/Signin";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <CssBaseline />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/Signin" element={<Signin />} />
         <Route path="/home" element={<Home />} />
         <Route path="/choose_sport" element={<Choose_sport />} />
         <Route path="/Find_a_team" element={<Find_a_team />} />

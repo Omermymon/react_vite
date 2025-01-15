@@ -16,30 +16,39 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-const Login = () => {
+const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const currentTheme = useTheme();
-  const logIn = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, username, password);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const logIngoogle = async () => {
-    try {
-      await signInWithPopup(auth, googleProvidor);
-    } catch (err) {
-      console.error(err);
-    }
-  };
   const navigate = useNavigate();
 
-  const navigateSign = () => {
-    console.log("Submitting:", { username, password });
-    navigate("/Signin");
+  const signUp = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      await createUserWithEmailAndPassword(auth, username, password);
+      await signInWithEmailAndPassword(auth, username, password); // Log the user in after sign up
+      navigate("/Home_Page"); // Redirect to home after successful sign-up & login
+    } catch (err) {
+      setError(err.message); // Display any error during sign-up or login
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signInGoogle = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      await signInWithPopup(auth, googleProvidor);
+      navigate("/Home_Page");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSubmit = () => {
@@ -48,17 +57,18 @@ const Login = () => {
   };
 
   const socialButtons = [
-    { label: "Log in with Facebook", logo: Facebooklogo },
-    { label: "Log in with Google", logo: Googlelogo },
-    { label: "Log in with Apple", logo: Applelogo },
+    { label: "Sign in with Facebook", logo: Facebooklogo, onClick: () => {} },
+    { label: "Sign in with Google", logo: Googlelogo, onClick: signInGoogle },
+    { label: "Sign in with Apple", logo: Applelogo, onClick: () => {} },
   ];
 
   return (
     <BoxWrapper>
       <Typography variant="h4" component="h1" sx={{ mb: 4, mt: 4 }}>
-        Log in to MyTeam
+        Sign in to MyTeam
       </Typography>
 
+      {/* Social Sign-In Buttons */}
       <Box
         sx={{
           width: "100%",
@@ -68,7 +78,7 @@ const Login = () => {
           alignItems: "center",
         }}
       >
-        {socialButtons.map(({ label, logo }) => (
+        {socialButtons.map(({ label, logo, onClick }) => (
           <Button
             key={label}
             variant="contained"
@@ -84,13 +94,15 @@ const Login = () => {
               height: 45,
               border: "1px solid grey",
             }}
-            onClick={label == "Log in with Google" ? logIngoogle : null}
+            onClick={onClick}
+            disabled={loading}
           >
             {label}
           </Button>
         ))}
       </Box>
 
+      {/* Sign-Up Form */}
       <Box
         sx={{
           width: "100%",
@@ -106,6 +118,7 @@ const Login = () => {
           label="Email or username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          disabled={loading}
         />
         <TextField
           id="password"
@@ -113,11 +126,12 @@ const Login = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={loading}
         />
         <Button
           variant="contained"
           fullWidth
-          onClick={logIn}
+          onClick={signUp}
           sx={{
             backgroundColor: currentTheme.palette.primary.main,
             color: currentTheme.palette.primary.contrastText,
@@ -126,25 +140,34 @@ const Login = () => {
             height: 45,
             mt: 2,
           }}
+          disabled={loading}
         >
-          Log in
+          {loading ? "Signing Up..." : "Sign Up"}
         </Button>
       </Box>
 
+      {/* Error Message */}
+      {error && (
+        <Typography variant="body2" sx={{ color: "red", mt: 2 }}>
+          {error}
+        </Typography>
+      )}
+
+      {/* Login Redirect Link */}
       <Typography variant="body2" sx={{ mt: 4, mb: 4, textAlign: "center" }}>
-        Don’t have an account?{" "}
+        Have an account?{" "}
         <span
           style={{
             color: currentTheme.palette.primary.main,
             cursor: "pointer",
           }}
-          onClick={navigateSign}
+          onClick={() => navigate("/login")}
         >
-          Sign in
+          Log in
         </span>
       </Typography>
     </BoxWrapper>
   );
 };
 
-export default Login;
+export default Signin;
